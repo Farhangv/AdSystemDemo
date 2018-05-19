@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="Content/bootstrap-rtl.css" rel="stylesheet" />
+    <link href="Content/bootstrap-theme-rtl.css" rel="stylesheet" />
+    <link href="Content/css/select2.css" rel="stylesheet" />
+    <link href="Content/custom.css" rel="stylesheet" />
+</head>
+<body>
+    <header class="container-fluid">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>-->
+                    <a class="navbar-brand" href="#">
+                        <img src="images/logo.gif" alt="لوگوی کهکشان" />
+                    </a>
+                </div>
+                <div id="navbar" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/Home.html">خانه</a></li>
+                        <li><a href="/Categories.html">دسته بندی ها</a></li>
+                        <li class="active"><a href="/Search.html">جستجو</a></li>
+                        <li><a href="/SubmitAd.html">ثبت آگهی</a></li>
+
+                    </ul>
+                    <ul class="nav navbar-nav navbar-left">
+                        <li><a href="/LoginRegister.html">ثبت نام/ورود</a></li>
+                        <li><a href="#">پیام پیامی</a></li>
+                        <li>
+                            <a href="#">
+                                <span class="fa fa-power-off"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="container wrapper">
+        <form method="get"action="/Search_Aciton.aspx" class="form-horizontal">
+            <div class="form-group">
+                <label for="query" class="control-label col-sm-2">عبارت جستجو</label>
+                <div class="col-sm-10">
+                    <input type="text" name="query" id="query" placeholder="جستجو..." class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="ad_type" class="control-label col-sm-2">نوع آگهی</label>
+                <div class="col-sm-10">
+                    <select id="ad_type" name="ad_type" class="form-control">
+                        <option value="rent">رهن و اجاره</option>
+                        <option value="sale">فروش</option>
+                    </select>
+                </div>
+            </div>
+            <fieldset id="rent_fields">
+                <legend class="col-sm-10 col-sm-offset-2">رهن و اجاره</legend>
+                <div class="form-group">
+                    <label for="deposit_from" class="control-label col-sm-2">رهن از</label>
+                    <div class="col-sm-4">
+                        <input type="number" name="deposit_from" id="deposit_from" class="form-control" />
+                    </div>
+                    <label for="deposit_to" class="control-label col-sm-1">تا</label>
+                    <div class="col-sm-5">
+                        <input type="number" name="deposit_to" id="deposit_to" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="rent_from" class="control-label col-sm-2">اجاره از</label>
+                    <div class="col-sm-4">
+                        <input type="number" name="rent_from" id="rent_from" class="form-control" />
+                    </div>
+                    <label for="rent_to" class="control-label col-sm-1">تا</label>
+                    <div class="col-sm-5">
+                        <input type="number" name="rent_to" id="rent_to" class="form-control" />
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset id="rent_fields">
+                <legend class="col-sm-10 col-sm-offset-2">فروش</legend>
+                <div class="form-group">
+                    <label for="price_from" class="control-label col-sm-2">مبلغ کل از</label>
+                    <div class="col-sm-4">
+                        <input type="number" name="price_from" id="price_from" class="form-control" />
+                    </div>
+                    <label for="price_to" class="control-label col-sm-1">تا</label>
+                    <div class="col-sm-5">
+                        <input type="number" name="price_to" id="price_to" class="form-control" />
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset id="rent_fields">
+                <legend class="col-sm-10 col-sm-offset-2">جستجوی پیشرفته</legend>
+                <div class="form-group">
+                    <label for="area_from" class="control-label col-sm-2">متراژ کل از</label>
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <input type="number" name="area_from" id="area_from" class="form-control" />
+                            <span class="input-group-addon">متر</span>
+                        </div>
+                    </div>
+                    <label for="area_to" class="control-label col-sm-1">تا</label>
+                    <div class="col-sm-5">
+                        <div class="input-group">
+                            <input type="number" name="area_to" id="area_to" class="form-control" />
+                            <span class="input-group-addon">متر</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="age" class="control-label col-sm-2">سن بنا</label>
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <input type="number" name="age" id="age" class="form-control" />
+                            <span class="input-group-addon">سال</span>
+                        </div>
+                    </div>
+                    <label for="units_count" class="control-label col-sm-1">تعداد واحد</label>
+                    <div class="col-sm-5">
+                        <div class="input-group">
+                            <input type="number" name="units_count" id="units_count" class="form-control" />
+                            <span class="input-group-addon">واحد</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="facilities" class="control-label col-sm-2">امکانات</label>
+                    <div class="col-sm-10">
+                        <select type="number" name="facilities" id="facilities" class="form-control" multiple="multiple">
+                            <option value="0">آسانسور</option>
+                            <option value="1">انباری</option>
+                            <option value="2">پارکینگ</option>
+                            <option value="3">استخر</option>
+                            <option value="4">سالن اجتماعات</option>
+                        </select>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!--<input type="submit" value="جستجو" />-->
+            <button type="submit" class="btn btn-sm btn-primary pull-left">
+                <span class="fa fa-search"></span>
+                جستجو
+            </button>
+        </form>
+    </section>
+    <script src="Scripts/jquery-1.9.1.js"></script>
+    <script src="Scripts/bootstrap-rtl.min.js"></script>
+    <script src="Scripts/select2.min.js"></script>
+    <script src="Scripts/custom.js"></script>
+</body>
+</html>
