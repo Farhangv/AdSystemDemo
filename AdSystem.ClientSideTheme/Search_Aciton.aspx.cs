@@ -12,7 +12,7 @@ namespace AdSystem.ClientSideTheme
         protected void Page_Load(object sender, EventArgs e)
         {
             var query = Request.QueryString["query"];
-            result.InnerHtml = query;
+            //result.InnerHtml = query;
         }
     }
 }

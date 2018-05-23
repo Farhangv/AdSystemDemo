@@ -69,7 +69,9 @@
     <Content Include="Categories.html" />
     <Content Include="Content\css\select2.css" />
     <Content Include="Content\css\select2.min.css" />
-    <Content Include="Scripts\custom.js" />
+    <Content Include="PagePartials\menu.html" />
+    <Content Include="Scripts\common.js" />
+    <Content Include="Scripts\search.js" />
     <Content Include="Scripts\i18n\af.js" />
     <Content Include="Scripts\i18n\ar.js" />
     <Content Include="Scripts\i18n\az.js" />
@@ -124,6 +126,13 @@
     <Content Include="Scripts\i18n\vi.js" />
     <Content Include="Scripts\i18n\zh-CN.js" />
     <Content Include="Scripts\i18n\zh-TW.js" />
+    <Content Include="DataSources\cities.json" />
+    <Content Include="DataSources\iran.json" />
+    <Content Include="DataSources\city_3f0413c902fe727d690cea0b08fa430121265925.json" />
+    <Content Include="DataSources\city_14600c187a7e7c4473442ff2dd5a2bbbe6662513.json" />
+    <None Include="Scripts\jquery-1.12.4.intellisense.js" />
+    <Content Include="Scripts\jquery-1.12.4.js" />
+    <Content Include="Scripts\jquery-1.12.4.min.js" />
     <Content Include="Scripts\select2.js" />
     <Content Include="Scripts\select2.min.js" />
     <Content Include="Search.html" />
@@ -230,15 +239,12 @@
     <Content Include="fonts\Vazir\Without-Latin\Vazir-WOL.woff" />
     <Content Include="fonts\Vazir\Without-Latin\Vazir-WOL.woff2" />
     <None Include="packages.config" />
-    <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="fonts\Vazir\vazir.css" />
     <Content Include="images\logo.gif" />
     <Content Include="images\no-photo.jpg" />
     <Content Include="Scripts\bootstrap-rtl.js" />
     <Content Include="Scripts\bootstrap-rtl.min.js" />
-    <Content Include="Scripts\jquery-1.9.1.js" />
-    <Content Include="Scripts\jquery-1.9.1.min.js" />
-    <Content Include="Scripts\jquery-1.9.1.min.map" />
+    <Content Include="Scripts\jquery-1.12.4.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
