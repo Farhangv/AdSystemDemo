@@ -69,6 +69,7 @@
     <Content Include="Categories.html" />
     <Content Include="Content\css\select2.css" />
     <Content Include="Content\css\select2.min.css" />
+    <Content Include="images\ajax-loader.gif" />
     <Content Include="PagePartials\menu.html" />
     <Content Include="Scripts\common.js" />
     <Content Include="Scripts\search.js" />

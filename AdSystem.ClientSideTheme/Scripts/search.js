@@ -1,6 +1,15 @@
-﻿'use strict'
+﻿'use strict';
 (function () { 
     $(function () {
+        $('.loader').hide();
+        $(document).ajaxStart(function () {
+            $('.loader').fadeIn("slow");
+            //.toggleClass('hidden') });
+        }); 
+        $(document).ajaxComplete(function () {
+            $('.loader').fadeOut("slow");
+            //.toggleClass('hidden')
+        });
         showSelectedFieldSet();
         fillCitiesDropDown();
         $('#ad_type').on('change', function () {
@@ -29,7 +38,10 @@
         $('#submit').on('click', submitSearchForm);
     });
     function fillCitiesDropDown() {
+
+
         $.getJSON('/DataSources/iran.json', function (cities) {
+            
             for (var i = 0; i < cities.length; i++) {
                 $('<option></option>')
                     .attr('value', cities[i].id)
@@ -57,7 +69,7 @@
     }
     function submitSearchForm()
     {
-        //console.log();
+        
         var formArray = $('#search-form').serializeArray();
         var formData = new FormData();
         for (var i = 0; i < formArray.length; i++) {
@@ -68,7 +80,7 @@
         //    $('#main-wrapper').html(response);
         //});
         $.ajax({
-            url: 'Search_Action.aspx',
+            url: 'Search_Aciton.aspx',
             method: 'POST',
             data: formArray,
             success: function (response) {
@@ -80,7 +92,8 @@
                     .html("خطایی در ارتباط با سرور به وجود آمده")
                     .append('<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>')
                     .prependTo('#main-wrapper');
-            }
+            },
+            
         });
     }
 })();
