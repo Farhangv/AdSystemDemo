@@ -54,5 +54,6 @@
         </section>
         <div runat="server" id="mydiv"></div>
         <asp:button runat="server" text="Button" ID="MyButton" OnClick="Unnamed1_Click" />
+        <%= DateTime.Now %>
     </form>
 

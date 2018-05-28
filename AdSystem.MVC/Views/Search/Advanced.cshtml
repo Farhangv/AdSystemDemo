@@ -1,0 +1,128 @@
+﻿
+@{
+    ViewBag.Title = "جستجوی پیشرفته";
+}
+
+<form method="post" action="/Search_Aciton.aspx" class="form-horizontal" id="search-form">
+    <div class="form-group">
+        <label for="query" class="control-label col-sm-2">عبارت جستجو</label>
+        <div class="col-sm-10">
+            <input type="text" name="query" id="query" placeholder="جستجو..." class="form-control" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="ad_type" class="control-label col-sm-2">نوع آگهی</label>
+        <div class="col-sm-10">
+            <select id="ad_type" name="ad_type" class="form-control">
+                <option value="nothing" selected>انتخاب کنید...</option>
+                <option value="rent">رهن و اجاره</option>
+                <option value="sale">فروش</option>
+            </select>
+        </div>
+    </div>
+    <fieldset id="rent_fields">
+        <legend class="col-sm-10 col-sm-offset-2">رهن و اجاره</legend>
+        <div class="form-group">
+            <label for="deposit_from" class="control-label col-sm-2">رهن از</label>
+            <div class="col-sm-4">
+                <div class="input-group">
+                    <input type="number" name="deposit_from" id="deposit_from" class="form-control" />
+                    <span class="input-group-addon">تومان</span>
+                </div>
+            </div>
+            <label for="deposit_to" class="control-label col-sm-1">تا</label>
+            <div class="col-sm-5">
+                <input type="number" name="deposit_to" id="deposit_to" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="rent_from" class="control-label col-sm-2">اجاره از</label>
+            <div class="col-sm-4">
+                <input type="number" name="rent_from" id="rent_from" class="form-control" />
+            </div>
+            <label for="rent_to" class="control-label col-sm-1">تا</label>
+            <div class="col-sm-5">
+                <input type="number" name="rent_to" id="rent_to" class="form-control" />
+            </div>
+        </div>
+    </fieldset>
+    <fieldset id="sale_fields">
+        <legend class="col-sm-10 col-sm-offset-2">فروش</legend>
+        <div class="form-group">
+            <label for="price_from" class="control-label col-sm-2">مبلغ کل از</label>
+            <div class="col-sm-4">
+                <input type="number" name="price_from" id="price_from" class="form-control" />
+            </div>
+            <label for="price_to" class="control-label col-sm-1">تا</label>
+            <div class="col-sm-5">
+                <input type="number" name="price_to" id="price_to" class="form-control" />
+            </div>
+        </div>
+    </fieldset>
+    <fieldset id="advanced_fields" class="static">
+        <legend class="col-sm-10 col-sm-offset-2">جستجوی پیشرفته</legend>
+        <div class="form-group">
+            <label for="area_from" class="control-label col-sm-2">متراژ کل از</label>
+            <div class="col-sm-4">
+                <div class="input-group">
+                    <input type="number" name="area_from" id="area_from" class="form-control" />
+                    <span class="input-group-addon">متر</span>
+                </div>
+            </div>
+            <label for="area_to" class="control-label col-sm-1">تا</label>
+            <div class="col-sm-5">
+                <div class="input-group">
+                    <input type="number" name="area_to" id="area_to" class="form-control" />
+                    <span class="input-group-addon">متر</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="age" class="control-label col-sm-2">سن بنا</label>
+            <div class="col-sm-4">
+                <div class="input-group">
+                    <input type="number" name="age" id="age" class="form-control" />
+                    <span class="input-group-addon">سال</span>
+                </div>
+            </div>
+            <label for="units_count" class="control-label col-sm-1">تعداد واحد</label>
+            <div class="col-sm-5">
+                <div class="input-group">
+                    <input type="number" name="units_count" id="units_count" class="form-control" />
+                    <span class="input-group-addon">واحد</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="facilities" class="control-label col-sm-2">امکانات</label>
+            <div class="col-sm-10">
+                <select name="facilities" id="facilities" class="form-control" multiple="multiple">
+                    <option value="0">آسانسور</option>
+                    <option value="1">انباری</option>
+                    <option value="2">پارکینگ</option>
+                    <option value="3">استخر</option>
+                    <option value="4">سالن اجتماعات</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="cities" class="control-label col-sm-2">شهر</label>
+            <div class="col-sm-10">
+                <select name="cities" id="cities" class="form-control">
+                    <option value="nothing" selected>انتخاب کنید...</option>
+
+                </select>
+            </div>
+            <div class="col-sm-10 col-sm-offset-2" id="districts"></div>
+        </div>
+
+
+    </fieldset>
+
+    <!--<input type="submit" value="جستجو" />-->
+    <button type="button" class="btn btn-sm btn-primary pull-left" id="submit">
+        <span class="fa fa-search"></span>
+        جستجو
+    </button>
+</form>
+<script src="~/Scripts/search.js"></script>
