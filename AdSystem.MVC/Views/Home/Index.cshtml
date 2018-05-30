@@ -1,54 +1,10 @@
-﻿
+﻿@using AdSystem.MVC.Models
+
 @{
     ViewBag.Title = "صفحه اصلی";
 }
 
-<article class="ad col-md-4 col-sm-6">
-    <header>
-        <h3>عنوان آگهی ملک</h3>
-    </header>
-    <img src="/images/no-photo.jpg" class="img img-thumbnail" alt="عنوان آگهی ملک" />
-    <footer>
-        <div class="row">
-            <div class="col-xs-6">متراژ</div>
-            <div class="col-xs-6">۱۰۰ متر</div>
-        </div>
-        <div class="row">
-            <div class="col-xs-6">قیمت کل</div>
-            <div class="col-xs-6">۱۰۰.۰۰۰ تومان</div>
-        </div>
-    </footer>
-</article>
-<article class="ad col-md-4 col-sm-6">
-    <header>
-        <h3>عنوان آگهی ملک</h3>
-    </header>
-    <img src="/images/no-photo.jpg" class="img img-thumbnail" alt="عنوان آگهی ملک" />
-    <footer>
-        <div class="row">
-            <div class="col-xs-6">متراژ</div>
-            <div class="col-xs-6">۱۰۰ متر</div>
-        </div>
-        <div class="row">
-            <div class="col-xs-6">قیمت کل</div>
-            <div class="col-xs-6">۱۰۰.۰۰۰ تومان</div>
-        </div>
-    </footer>
-</article>
-<article class="ad col-md-4 col-sm-6">
-    <header>
-        <h3>عنوان آگهی ملک</h3>
-    </header>
-    <img src="/images/no-photo.jpg" class="img img-thumbnail" alt="عنوان آگهی ملک" />
-    <footer>
-        <div class="row">
-            <div class="col-xs-6">متراژ</div>
-            <div class="col-xs-6">۱۰۰ متر</div>
-        </div>
-        <div class="row">
-            <div class="col-xs-6">قیمت کل</div>
-            <div class="col-xs-6">۱۰۰.۰۰۰ تومان</div>
-        </div>
-    </footer>
-</article>
-
+@Html.Partial("_AdBox", new Ad() { Id = 1, Title = "فروش آپارتمان ۱۰۰ متری", Area= 100, UnitCount = 10, Age = 1  })
+@Html.Partial("_AdBox", new Ad() { Id = 1, Title = "فروش آپارتمان ۱۰۰ متری", Area = 100, UnitCount = 10, Age = 1 })
+@Html.Partial("_AdBox", new Ad() { Id = 1, Title = "فروش آپارتمان ۱۰۰ متری", Area = 100, UnitCount = 10, Age = 1 })
+@Html.Action("AdBox", "Ads")

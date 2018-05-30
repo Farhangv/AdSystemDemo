@@ -12,5 +12,11 @@ namespace AdSystem.MVC.Controllers
         {
             return View();
         }
+
+        [NonAction]
+        public ActionResult AboutUs()
+        {
+            return Content("About Us!");
+        }
     }
 }
