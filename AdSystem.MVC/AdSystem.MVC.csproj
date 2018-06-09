@@ -210,11 +210,21 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806090501323_init.cs" />
+    <Compile Include="Migrations\201806090501323_init.Designer.cs">
+      <DependentUpon>201806090501323_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806090717451_adsystem_entities_added.cs" />
+    <Compile Include="Migrations\201806090717451_adsystem_entities_added.Designer.cs">
+      <DependentUpon>201806090717451_adsystem_entities_added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806090840563_not_null_valuetypes.cs" />
+    <Compile Include="Migrations\201806090840563_not_null_valuetypes.Designer.cs">
+      <DependentUpon>201806090840563_not_null_valuetypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Ad.cs" />
-    <Compile Include="Models\AdsType.cs" />
-    <Compile Include="Models\Category.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Context.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -389,10 +399,10 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Search\Advanced.cshtml" />
     <Content Include="Views\Shared\_AdBox.cshtml" />
+    <Content Include="Views\Ads\ShowCreateForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Ads\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -405,6 +415,23 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201806090501323_init.resx">
+      <DependentUpon>201806090501323_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806090717451_adsystem_entities_added.resx">
+      <DependentUpon>201806090717451_adsystem_entities_added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806090840563_not_null_valuetypes.resx">
+      <DependentUpon>201806090840563_not_null_valuetypes.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AdSystem.Models\AdSystem.Models.csproj">
+      <Project>{124e6219-8bb0-42f3-94c7-b902d0a8de30}</Project>
+      <Name>AdSystem.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

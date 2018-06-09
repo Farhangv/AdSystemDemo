@@ -1,4 +1,5 @@
-﻿using AdSystem.MVC.Models;
+﻿using AdSystem.Models;
+using AdSystem.MVC.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,28 @@ namespace AdSystem.MVC.Controllers
 {
     public class AdsController : Controller
     {
+        public ActionResult ShowCreateForm()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult SubmitCreateForm()
+        {
+            SaleAd sa = new SaleAd();
+            sa.Age = int.Parse(Request.Form["Age"]);
+            sa.PricePerUnit = int.Parse(Request.Form["PricePerUnit"]);
+            sa.Title = Request.Form["Title"];
+            sa.Area = int.Parse(Request.Form["Area"]);
+
+            AdDbContext ctx = new AdDbContext();
+            ctx.SaleAds.Add(sa);
+            ctx.SaveChanges();
+
+            return Content("ثبت با موفقیت انجام شد");
+        }
+
+
         [ChildActionOnly]
         public ActionResult AdBox()
         {

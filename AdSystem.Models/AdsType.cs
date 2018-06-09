@@ -1,4 +1,4 @@
-﻿namespace AdSystem.MVC.Models
+﻿namespace AdSystem.Models
 {
     public enum AdsType
     {

@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using AdSystem.Models;
 
 namespace AdSystem.MVC.Models
 {
@@ -11,23 +12,28 @@ namespace AdSystem.MVC.Models
     {
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
-            // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
-            // Add custom user claims here
             return userIdentity;
         }
     }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class AdDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext()
+        public AdDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
 
-        public static ApplicationDbContext Create()
+        public virtual DbSet<Ad> Ads { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Feature> Features { get; set; }
+        public virtual DbSet<Media> Media { get; set; }
+        public virtual DbSet<RentAd> RentAds { get; set; }
+        public virtual DbSet<SaleAd> SaleAds { get; set; }
+
+        public static AdDbContext Create()
         {
-            return new ApplicationDbContext();
+            return new AdDbContext();
         }
     }
 }
