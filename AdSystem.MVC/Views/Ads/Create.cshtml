@@ -1,0 +1,65 @@
+﻿@model AdSystem.Models.SaleAd
+
+@{
+    ViewBag.Title = "فرم ثبت آگهی";
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+@using (Html.BeginForm("Create", "Ads", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CategoryId, new { @class = "control-label col-sm-2" })
+        <div class="col-sm-10">
+            @*@Html.DropDownListFor(x => x.CategoryId, (SelectList)ViewBag.CategoryLookupList,
+                new { @class = "form-control" })*@
+            @Html.DropDownListFor(x => x.CategoryId, null,
+                new { @class = "form-control" })
+
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        @*@Html.Label("Title","عنوان", new { @class = "control-label col-sm-2" })*@
+        @Html.LabelFor(model => model.Title, new { @class = "control-label col-sm-2" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(x => x.Title, new { @class = "form-control", placeholder = "عنوان" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Area, new { @class = "control-label col-sm-2" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(x => x.Area, new { @class = "form-control",
+                placeholder = "مساحت", type = "number" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Age, new { @class = "control-label col-sm-2" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(x => x.Age, new
+            {
+               @class = "form-control",
+               placeholder = "سن بنا",
+               type = "number"
+            })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.PricePerUnit, new { @class = "control-label col-sm-2" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(x => x.PricePerUnit, new
+       {
+           @class = "form-control",
+           placeholder = "قیمت هر متر مربع",
+           type = "number"
+       })
+        </div>    </div>
+    <div class="form-group">
+        <button class="btn btn-success pull-left" type="submit">
+            ذخیره
+        </button>
+    </div>
+}

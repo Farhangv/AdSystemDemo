@@ -204,6 +204,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdsController.cs" />
+    <Compile Include="Controllers\DemoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
@@ -399,7 +400,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Search\Advanced.cshtml" />
     <Content Include="Views\Shared\_AdBox.cshtml" />
-    <Content Include="Views\Ads\ShowCreateForm.cshtml" />
+    <Content Include="Views\Ads\Create_Old.cshtml" />
+    <Content Include="Views\Ads\Create.cshtml" />
+    <Content Include="Views\Demo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

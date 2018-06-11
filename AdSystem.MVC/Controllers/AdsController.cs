@@ -10,25 +10,43 @@ namespace AdSystem.MVC.Controllers
 {
     public class AdsController : Controller
     {
-        public ActionResult ShowCreateForm()
+        
+        public ActionResult Create()
         {
+            AdDbContext ctx = new AdDbContext();
+            ViewBag.CategoryId = new SelectList(ctx.Categories.ToList(), "Id", "Title");
             return View();
         }
 
         [HttpPost]
-        public ActionResult SubmitCreateForm()
+        //public ActionResult Create(FormCollection form)
+        //public ActionResult Create(int age, int pricePerUnit, string title, int area)
+        public ActionResult Create(SaleAd ad)
         {
-            SaleAd sa = new SaleAd();
-            sa.Age = int.Parse(Request.Form["Age"]);
-            sa.PricePerUnit = int.Parse(Request.Form["PricePerUnit"]);
-            sa.Title = Request.Form["Title"];
-            sa.Area = int.Parse(Request.Form["Area"]);
+            //SaleAd sa = new SaleAd();
+
+            //sa.Age = int.Parse(Request.Form["Age"]);
+            //sa.PricePerUnit = int.Parse(Request.Form["PricePerUnit"]);
+            //sa.Title = Request.Form["Title"];
+            //sa.Area = int.Parse(Request.Form["Area"]);
+
+
+            //sa.Age = int.Parse(form["Age"]);
+            //sa.PricePerUnit = int.Parse(form["PricePerUnit"]);
+            //sa.Title = form["Title"];
+            //sa.Area = int.Parse(form["Area"]);
+
+            //sa.Age = age;
+            //sa.Title = title;
+            //sa.PricePerUnit = pricePerUnit;
+            //sa.Area = area;
 
             AdDbContext ctx = new AdDbContext();
-            ctx.SaleAds.Add(sa);
+            //ctx.SaleAds.Add(sa);
+            ctx.SaleAds.Add(ad);
             ctx.SaveChanges();
 
-            return Content("ثبت با موفقیت انجام شد");
+            return Content("ثبت با موفقیت انجام شد", "text/plain");
         }
 
 
