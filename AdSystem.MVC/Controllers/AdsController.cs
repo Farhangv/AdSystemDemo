@@ -13,15 +13,13 @@ namespace AdSystem.MVC.Controllers
 {
     public class AdsController : Controller
     {
-        
-        public ActionResult Create()
+        public ActionResult ShowCreateForm()
         {
-            AdDbContext ctx = new AdDbContext();
-            ViewBag.CategoryId = new SelectList(ctx.Categories.ToList(), "Id", "Title");
             return View();
         }
 
         [HttpPost]
+<<<<<<< HEAD
         public ActionResult Create(AdsCreateViewModel viewModel)
         {
             var extension = "";
@@ -88,6 +86,21 @@ namespace AdSystem.MVC.Controllers
 
                 return View(viewModel);
             }
+=======
+        public ActionResult SubmitCreateForm()
+        {
+            SaleAd sa = new SaleAd();
+            sa.Age = int.Parse(Request.Form["Age"]);
+            sa.PricePerUnit = int.Parse(Request.Form["PricePerUnit"]);
+            sa.Title = Request.Form["Title"];
+            sa.Area = int.Parse(Request.Form["Area"]);
+
+            AdDbContext ctx = new AdDbContext();
+            ctx.SaleAds.Add(sa);
+            ctx.SaveChanges();
+
+            return Content("ثبت با موفقیت انجام شد");
+>>>>>>> parent of 269c7cc... Session36-970321
         }
 
         [NonAction]
