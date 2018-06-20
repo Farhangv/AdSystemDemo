@@ -1,17 +1,19 @@
-﻿@model AdSystem.MVC.ViewModels.AdsCreateViewModel
+﻿@model AdSystem.MVC.ViewModels.AdsEditViewModel
 
 @{
-    ViewBag.Title = "فرم ثبت آگهی";
+    ViewBag.Title = "ویرایش آگهی";
 }
 
 <h2>@ViewBag.Title</h2>
 
-
-@using (Html.BeginForm("Create", "Ads", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+<div class="row" style="text-align:center; margin:25px;">
+    <img src="@Model.ThumbnailPhotoPath" class="img-rounded" style="height:150px;" />
+</div>
+@using (Html.BeginForm("Edit", "Ads", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
 {
 
-    @Html.ValidationSummary(true,null, new { @class = "text-danger"})
-
+    @Html.ValidationSummary(true, null, new { @class = "text-danger" })
+    @Html.HiddenFor(x => x.Id)
     <div class="form-group">
         @Html.LabelFor(model => model.AdType, new { @class = "control-label col-sm-2" })
         <div class="col-sm-10">
@@ -42,8 +44,12 @@
     <div class="form-group">
         @Html.LabelFor(x => x.Area, new { @class = "control-label col-sm-2" })
         <div class="col-sm-10">
-            @Html.TextBoxFor(x => x.Area, new { @class = "form-control",
-                placeholder = "مساحت", type = "number" })
+            @Html.TextBoxFor(x => x.Area, new
+       {
+           @class = "form-control",
+           placeholder = "مساحت",
+           type = "number"
+       })
             @Html.ValidationMessageFor(x => x.Area, null, new { @class = "text-danger" })
         </div>
     </div>
@@ -51,11 +57,11 @@
         @Html.LabelFor(x => x.Age, new { @class = "control-label col-sm-2" })
         <div class="col-sm-10">
             @Html.TextBoxFor(x => x.Age, new
-            {
-               @class = "form-control",
-               placeholder = "سن بنا",
-               type = "number"
-            })
+       {
+           @class = "form-control",
+           placeholder = "سن بنا",
+           type = "number"
+       })
             @Html.ValidationMessageFor(x => x.Age, null, new { @class = "text-danger" })
         </div>
     </div>
@@ -69,7 +75,7 @@
            type = "number"
        })
             @Html.ValidationMessageFor(x => x.PricePerUnit, null, new { @class = "text-danger" })
-        </div>    
+        </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(x => x.Rent, new { @class = "control-label col-sm-2" })
@@ -132,7 +138,7 @@
 
 @section scripts
 {
-<script>
+    <script>
     //console.log("Loaded from section");
 
     function adTypeChangeHandler()
@@ -158,5 +164,5 @@
             adTypeChangeHandler();
         });
     });
-</script>
+    </script>
 }

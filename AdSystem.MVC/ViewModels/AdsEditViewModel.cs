@@ -6,8 +6,10 @@ using System.Web;
 
 namespace AdSystem.MVC.ViewModels
 {
-    public class AdsCreateViewModel
+    public class AdsEditViewModel
     {
+        [Display(Name = "شناسه")]
+        public int Id { get; set; }
         [MaxLength(100, ErrorMessage = "عنوان باید کمتر از ۱۰۰ کاراکتر باشد")]
         [MinLength(5, ErrorMessage = "عنوان باید حداقل ۵ کاراکتر باشد")]
         [Display(Name = "عنوان")]
@@ -26,7 +28,6 @@ namespace AdSystem.MVC.ViewModels
         [Display(Name = "قیمت هر متر مربع")]
         public int? PricePerUnit { get; set; }
         [Display(Name = "تصویر بند انگشتی")]
-        [Required(ErrorMessage = "این فیلد اجباری است.")]
         public HttpPostedFileBase ThumbnailFile { get; set; }
         [Display(Name = "فایل ۱ آگهی")]
         public HttpPostedFileBase MediaFile1 { get; set; }
@@ -43,6 +44,8 @@ namespace AdSystem.MVC.ViewModels
         [Display(Name = "اجاره")]
         public int? Rent { get; set; }
 
+
+        public string ThumbnailPhotoPath { get; set; }
 
     }
 }

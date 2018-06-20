@@ -46,6 +46,12 @@
     </header>
 
     <section class="container main-wrapper">
+        @if (!string.IsNullOrEmpty(TempData["Message"]?.ToString()))
+        {
+            <div class="alert alert-@(TempData["MessageClass"] ?? "success")">
+                @TempData["Message"]
+            </div>
+        }
         @RenderBody()
     </section>
 
@@ -54,5 +60,6 @@
     </div>
     <script src="/Scripts/jquery-1.12.4.js"></script>
     <script src="/Scripts/bootstrap-rtl.min.js"></script>
+    @RenderSection("scripts", false)
 </body>
 </html>

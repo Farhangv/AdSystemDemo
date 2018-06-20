@@ -1,0 +1,29 @@
+﻿@model AdSystem.Models.Ad
+
+@{
+    ViewBag.Title = "حذف رکورد";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p class="text-danger" style="font-size:1.4em;">
+    آیا از حذف این رکورد اطمینان دارید؟
+</p>
+<p>
+    @Model.Title
+    <br/>
+    @Model.Area متری
+    <br/>
+    @Model.Category.Title
+    
+</p>
+<a href="@Url.Action("Index")" class="btn btn-default pull-right">
+    انصراف
+</a>
+<form method="post">
+    @Html.HiddenFor(x => x.Id)
+
+    <button type="submit" class="btn btn-danger pull-left">
+        تایید و حذف
+    </button>
+</form>
