@@ -8,17 +8,19 @@ using System.Web;
 using System.Web.Mvc;
 using AdSystem.MVC.Models;
 using AdSystem.Models;
+using System.Data.SqlClient;
+using System.IO;
 
-namespace AdSystem.MVC.Controllers
+namespace AdSystem.MVC.Areas.Admin.Controllers
 {
     public class CategoriesController : Controller
     {
-        private AdDbContext db = new AdDbContext();
+        private AdDbContext ctx = new AdDbContext();
 
         // GET: Categories
         public ActionResult Index()
         {
-            return View(db.Categories.ToList());
+            return View(ctx.Categories.ToList());
         }
 
         // GET: Categories/Details/5
@@ -28,7 +30,7 @@ namespace AdSystem.MVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = db.Categories.Find(id);
+            Category category = ctx.Categories.Find(id);
             if (category == null)
             {
                 return HttpNotFound();
@@ -47,12 +49,12 @@ namespace AdSystem.MVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Category category)
+        public ActionResult Create([Bind(Include = "Id,Title")] Category category)
         {
             if (ModelState.IsValid)
             {
-                db.Categories.Add(category);
-                db.SaveChanges();
+                ctx.Categories.Add(category);
+                ctx.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -64,9 +66,9 @@ namespace AdSystem.MVC.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return new HttpStatusCodeResult(400);
             }
-            Category category = db.Categories.Find(id);
+            Category category = ctx.Categories.Find(id);
             if (category == null)
             {
                 return HttpNotFound();
@@ -79,13 +81,37 @@ namespace AdSystem.MVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title")] Category category)
+        public ActionResult Edit(Category category)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Entry(category).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    ctx.Entry(category).State = EntityState.Modified;
+                    ctx.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                TempData["Message"] = "ویرایش رکورد با موفقیت انجام شد";
+
+            }
+            catch (SqlException ex)
+            {
+
+            }
+            catch(FormatException ex)
+            {
+
+            }
+            catch(IOException ex)
+            {
+
+            }
+            catch (Exception ex)
+            {
+                TempData["MessageClass"] = "danger";
+                TempData["Message"] = "خطایی در ویرایش رکورد به وجود آمده است\n";
+                TempData["Message"] += ex.Message + "\n";
+                TempData["Message"] += ex.StackTrace;
             }
             return View(category);
         }
@@ -97,7 +123,7 @@ namespace AdSystem.MVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = db.Categories.Find(id);
+            Category category = ctx.Categories.Find(id);
             if (category == null)
             {
                 return HttpNotFound();
@@ -110,9 +136,9 @@ namespace AdSystem.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Category category = db.Categories.Find(id);
-            db.Categories.Remove(category);
-            db.SaveChanges();
+            Category category = ctx.Categories.Find(id);
+            ctx.Categories.Remove(category);
+            ctx.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -120,7 +146,7 @@ namespace AdSystem.MVC.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                ctx.Dispose();
             }
             base.Dispose(disposing);
         }

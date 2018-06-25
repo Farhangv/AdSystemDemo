@@ -1,0 +1,162 @@
+﻿@model AdSystem.MVC.ViewModels.AdsCreateViewModel
+
+@{
+    ViewBag.Title = "فرم ثبت آگهی";
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+@using (Html.BeginForm("Create", "Ads", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+{
+
+    @Html.ValidationSummary(true,null, new { @class = "text-danger"})
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.AdType, new { @class = "control-label col-sm-2" })
+        <div class="col-sm-10">
+            @Html.DropDownListFor(x => x.AdType, null,
+                new { @class = "form-control" })
+
+            @Html.ValidationMessageFor(x => x.CategoryId, null, new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CategoryId, new { @class = "control-label col-sm-2" })
+        <div class="col-sm-10">
+            @Html.DropDownListFor(x => x.CategoryId, null,
+                new { @class = "form-control" })
+
+            @Html.ValidationMessageFor(x => x.CategoryId, null, new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Title, new { @class = "control-label col-sm-2" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(x => x.Title, new { @class = "form-control", placeholder = "عنوان" })
+            @Html.ValidationMessageFor(x => x.Title, null, new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Area, new { @class = "control-label col-sm-2" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(x => x.Area, new { @class = "form-control",
+                placeholder = "مساحت", type = "number" })
+            @Html.ValidationMessageFor(x => x.Area, null, new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Age, new { @class = "control-label col-sm-2" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(x => x.Age, new
+            {
+               @class = "form-control",
+               placeholder = "سن بنا",
+               type = "number"
+            })
+            @Html.ValidationMessageFor(x => x.Age, null, new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.PricePerUnit, new { @class = "control-label col-sm-2" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(x => x.PricePerUnit, new
+       {
+           @class = "form-control",
+           placeholder = "قیمت هر متر مربع",
+           type = "number"
+       })
+            @Html.ValidationMessageFor(x => x.PricePerUnit, null, new { @class = "text-danger" })
+        </div>    
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Rent, new { @class = "control-label col-sm-2" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(x => x.Rent, new
+       {
+           @class = "form-control",
+           placeholder = "اجاره",
+           type = "number"
+       })
+            @Html.ValidationMessageFor(x => x.Rent, null, new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Diposite, new { @class = "control-label col-sm-2" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(x => x.Diposite, new
+       {
+           @class = "form-control",
+           placeholder = "رهن",
+           type = "number"
+       })
+            @Html.ValidationMessageFor(x => x.Diposite, null, new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.ThumbnailFile, new { @class = "control-label col-sm-2" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(x => x.ThumbnailFile, new { type = "file", @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.ThumbnailFile, null, new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.MediaFile1, new { @class = "control-label col-sm-2" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(x => x.MediaFile1, new { type = "file", @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.MediaFile1, null, new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.MediaFile2, new { @class = "control-label col-sm-2" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(x => x.MediaFile2, new { type = "file", @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.MediaFile2, null, new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.MediaFile3, new { @class = "control-label col-sm-2" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(x => x.MediaFile3, new { type = "file", @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.MediaFile3, null, new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-success pull-left" type="submit">
+            ذخیره
+        </button>
+    </div>
+}
+
+@section scripts
+{
+<script>
+    //console.log("Loaded from section");
+
+    function adTypeChangeHandler()
+    {
+        console.log($('#AdType').val());
+        if ($('#AdType').val() == 'sale') {
+            $('#Rent').parentsUntil('form').hide();
+            $('#Diposite').parentsUntil('form').hide();
+            $('#PricePerUnit').parentsUntil('form').show();
+        }
+        else {
+            $('#Rent').parentsUntil('form').show();
+            $('#Diposite').parentsUntil('form').show();
+            $('#PricePerUnit').parentsUntil('form').hide();
+
+        }
+    }
+
+    $(function () {
+        adTypeChangeHandler();
+        $('#AdType').on('change', function () {
+            console.log("Changed");
+            adTypeChangeHandler();
+        });
+    });
+</script>
+}

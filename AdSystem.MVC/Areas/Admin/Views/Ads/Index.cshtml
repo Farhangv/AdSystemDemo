@@ -1,0 +1,51 @@
+﻿@model IEnumerable<AdSystem.Models.Ad>
+
+@{
+    ViewBag.Title = "فهرست آگهی ها";
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+
+<table class="table table-bordered table-hover table-striped">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(x => x.Id)</th>
+            <th>@Html.DisplayNameFor(x => x.Title)</th>
+            <th>@Html.DisplayNameFor(x => x.Area)</th>
+            <th>نوع آگهی</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ad in Model)
+        {
+            <tr>
+                <td>@ad.Id</td>
+                <td>@ad.Title</td>
+                <td>@ad.Area</td>
+                <td>
+                    @if (ad is AdSystem.Models.SaleAd)
+                    {
+                        <text>آگهی فروش</text>
+                    }
+                    else
+                    {
+                        <text>آگهی اجاره</text>
+}
+                </td>
+                <td>
+                    <a href="@Url.Action("Edit", new { id = ad.Id })" 
+                    class = "btn btn-primary btn-xs">
+                        <span class="fa fa-edit"></span>
+                    </a>
+                    <a href="@Url.Action("Delete", new { id = ad.Id })"
+                        class = "btn btn-danger  btn-xs">
+                        <span class="fa fa-remove"></span>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
