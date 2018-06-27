@@ -17,9 +17,15 @@ namespace AdSystem.MVC.Controllers
         public ActionResult Index()
         {
             AdDbContext ctx = new AdDbContext();
-            return View(ctx.Ads.ToList());
+            var model = ctx.Ads.ToList();
+            return View(model);
         }
-        
+        public ActionResult Details(int id)
+        {
+            AdDbContext ctx = new AdDbContext();
+            var ad = ctx.Ads.Find(id);
+            return View(ad);
+        }
         public ActionResult Create()
         {
             AdDbContext ctx = new AdDbContext();
@@ -142,6 +148,14 @@ namespace AdSystem.MVC.Controllers
         {
             var ad = new Ad() { Id = 1, Title = "فروش آپارتمان ۱۰۰ متری", Area = 100, UnitCount = 10, Age = 1 };
             return PartialView("_AdBox", ad);
+        }
+
+        public ActionResult GetMedia(int id)
+        {
+            AdDbContext ctx = new AdDbContext();
+            var media = ctx.Media.Find(id);
+
+            return File(media.FileContent, media.MimeType, media.OriginalFileName);
         }
 
     }

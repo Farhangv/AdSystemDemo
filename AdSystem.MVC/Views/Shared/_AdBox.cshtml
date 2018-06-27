@@ -4,7 +4,7 @@
     <header>
         <h3>@Model.Title</h3>
     </header>
-    <img src="/images/no-photo.jpg" class="img img-thumbnail" alt="عنوان آگهی ملک" />
+        <img src="@(Model.ThumbnailPhotoPath == null ? "/images/no-photo.jpg" : Model.ThumbnailPhotoPath)" class="img img-thumbnail" alt="عنوان آگهی ملک" />
     <footer>
         <div class="row">
             <div class="col-xs-6">متراژ</div>

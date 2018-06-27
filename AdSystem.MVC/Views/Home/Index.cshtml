@@ -1,10 +1,10 @@
 ﻿@using AdSystem.Models
+@model IEnumerable<AdSystem.Models.Ad>
 
 @{
     ViewBag.Title = "صفحه اصلی";
 }
-
-@Html.Partial("_AdBox", new Ad() { Id = 1, Title = "فروش آپارتمان ۱۰۰ متری", Area= 100, UnitCount = 10, Age = 1  })
-@Html.Partial("_AdBox", new Ad() { Id = 1, Title = "فروش آپارتمان ۱۰۰ متری", Area = 100, UnitCount = 10, Age = 1 })
-@Html.Partial("_AdBox", new Ad() { Id = 1, Title = "فروش آپارتمان ۱۰۰ متری", Area = 100, UnitCount = 10, Age = 1 })
-@Html.Action("AdBox", "Ads")
+@foreach (var ad in Model)
+{
+    @Html.Partial("_AdBox", ad)
+}

@@ -427,13 +427,13 @@
     <Content Include="Views\Search\Advanced.cshtml" />
     <Content Include="Views\Shared\_AdBox.cshtml" />
     <Content Include="Views\Ads\Create.cshtml" />
-    <Content Include="Views\Demo\Index.cshtml" />
     <Content Include="Views\Ads\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Categories\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Categories\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Categories\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Categories\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Categories\Index.cshtml" />
+    <Content Include="Views\Ads\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
