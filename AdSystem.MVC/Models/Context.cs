@@ -15,6 +15,9 @@ namespace AdSystem.MVC.Models
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
             return userIdentity;
         }
+        public string Name { get; set; }
+        public string Family { get; set; }
+
     }
 
     public class AdDbContext : IdentityDbContext<ApplicationUser>

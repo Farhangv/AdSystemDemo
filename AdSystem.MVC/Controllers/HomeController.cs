@@ -10,9 +10,19 @@ namespace AdSystem.MVC.Controllers
     public class HomeController : Controller
     {
         private AdDbContext ctx = new AdDbContext();
-        public ActionResult Index()
-        {
-            var model = ctx.Ads.ToList();
+        public ActionResult Index(int? page)
+        { 
+            var model = ctx.Ads
+                .OrderByDescending(p => p.Id)
+                .Skip(((page ?? 1) - 1) * 6)
+                .Take(6)
+                .ToList();
+
+            ViewBag.CurrentPage = page ?? 1;
+            var totalRecords = ctx.Ads.Count();
+            ViewBag.PageCount = totalRecords % 6 == 0 ? totalRecords / 6 : (totalRecords / 6) + 1;
+            
+
             return View(model);
         }
 

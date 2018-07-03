@@ -208,6 +208,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdsController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoriesController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\DemoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -227,6 +228,10 @@
     <Compile Include="Migrations\201806090840563_not_null_valuetypes.cs" />
     <Compile Include="Migrations\201806090840563_not_null_valuetypes.Designer.cs">
       <DependentUpon>201806090840563_not_null_valuetypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807010903239_user_details_changed.cs" />
+    <Compile Include="Migrations\201807010903239_user_details_changed.Designer.cs">
+      <DependentUpon>201807010903239_user_details_changed.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -434,6 +439,7 @@
     <Content Include="Areas\Admin\Views\Categories\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Categories\Index.cshtml" />
     <Content Include="Views\Ads\Details.cshtml" />
+    <Content Include="Views\Categories\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -461,6 +467,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806090840563_not_null_valuetypes.resx">
       <DependentUpon>201806090840563_not_null_valuetypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807010903239_user_details_changed.resx">
+      <DependentUpon>201807010903239_user_details_changed.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using AdSystem.MVC.Models;
+using System.Net.Mail;
 
 namespace AdSystem.MVC
 {
@@ -18,7 +19,17 @@ namespace AdSystem.MVC
     {
         public Task SendAsync(IdentityMessage message)
         {
-            // Plug in your email service here to send an email.
+            using (SmtpClient client = new SmtpClient())
+            {
+                client.Host = "smtp.kahkeshan.com";
+                client.Port = 21;
+                client.Credentials = new System.Net
+                    .NetworkCredential("my@kahkeshan.com", "123");
+                client.Send("email from web config",
+                                            message.Destination,
+                                            message.Subject,
+                                            message.Body);
+            }
             return Task.FromResult(0);
         }
     }
@@ -28,6 +39,7 @@ namespace AdSystem.MVC
         public Task SendAsync(IdentityMessage message)
         {
             // Plug in your SMS service here to send a text message.
+            
             return Task.FromResult(0);
         }
     }
@@ -77,6 +89,7 @@ namespace AdSystem.MVC
                 BodyFormat = "Your security code is {0}"
             });
             manager.EmailService = new EmailService();
+            
             manager.SmsService = new SmsService();
             var dataProtectionProvider = options.DataProtectionProvider;
             if (dataProtectionProvider != null)

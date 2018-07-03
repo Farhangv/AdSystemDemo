@@ -8,3 +8,19 @@
 {
     @Html.Partial("_AdBox", ad)
 }
+
+
+<div>
+
+    <ul>
+        @for (int i = 1; i <= (int)ViewBag.PageCount; i++)
+        {
+            <li>
+                <a href="@Url.Action("Index", new { page = i })">
+                    @i
+                </a>
+            </li>
+        }
+    </ul>
+
+</div>
